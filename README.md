@@ -9,7 +9,7 @@ A project that leverages AI to optimize resumes for better ATS (Applicant Tracki
 - **Tech Stack:** Python, NLP libraries (Spacy, Transformers), JSON
 
 ## Development Time
-- Solo project completed in ~3 weeks (January – February)
+- Solo project.
 - Included dataset collection, skill mapping, and automated analysis features
 
 ## Usage
