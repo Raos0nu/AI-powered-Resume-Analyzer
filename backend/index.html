@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Resume Analyzer</title>
+</head>
+<body>
+  <h2>Upload Resume for Analysis</h2>
+  <form action="http://127.0.0.1:5000/analyze" method="post" enctype="multipart/form-data">
+    <label>Resume (PDF/DOCX):</label>
+    <input type="file" name="resume" required><br><br>
+
+    <label>Job Description:</label><br>
+    <textarea name="job_description" rows="4" cols="50"></textarea><br><br>
+
+    <input type="submit" value="Analyze">
+  </form>
+</body>
+</html>
