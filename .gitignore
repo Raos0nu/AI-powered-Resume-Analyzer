@@ -25,6 +25,18 @@ venv/
 ENV/
 env/
 .venv
+Scripts/
+pyvenv.cfg
+Lib/
+Include/
+share/
+
+# Python packages in root (virtual env artifacts)
+blinker/
+blinker-*/
+click/
+click-*/
+_distutils_hack/
 
 # Environment variables
 .env
