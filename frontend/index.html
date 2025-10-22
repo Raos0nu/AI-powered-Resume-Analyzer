@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Resume Analyzer - ATS Score & Skills Matcher</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="40" height="40" rx="8" fill="url(#gradient)"/>
+                        <path d="M12 14h16M12 20h16M12 26h10" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                        <defs>
+                            <linearGradient id="gradient" x1="0" y1="0" x2="40" y2="40">
+                                <stop offset="0%" stop-color="#667eea"/>
+                                <stop offset="100%" stop-color="#764ba2"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <h1>AI Resume Analyzer</h1>
+                </div>
+                <p class="subtitle">Optimize your resume for ATS systems and get instant feedback</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Upload Section -->
+            <section class="upload-section card">
+                <h2>Upload Your Resume</h2>
+                <form id="analyzeForm">
+                    <div class="file-upload-wrapper">
+                        <input type="file" id="resumeFile" name="resume" accept=".pdf,.docx,.txt" required>
+                        <label for="resumeFile" class="file-upload-label">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span class="file-name">Choose file or drag and drop</span>
+                            <span class="file-info">Supports PDF, DOCX, TXT (Max 5MB)</span>
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="jobDescription">Job Description (Optional)</label>
+                        <textarea 
+                            id="jobDescription" 
+                            name="job_description" 
+                            rows="6" 
+                            placeholder="Paste the job description here to get a detailed ATS match score and see which skills are missing..."
+                        ></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" id="analyzeBtn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <circle cx="11" cy="11" r="8" stroke-width="2"/>
+                            <path d="M21 21l-4.35-4.35" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        Analyze Resume
+                    </button>
+                </form>
+            </section>
+
+            <!-- Loading Spinner -->
+            <div id="loadingSpinner" class="loading-spinner" style="display: none;">
+                <div class="spinner"></div>
+                <p>Analyzing your resume...</p>
+            </div>
+
+            <!-- Results Section -->
+            <div id="resultsSection" class="results-section" style="display: none;">
+                <!-- ATS Score Card -->
+                <div id="atsScoreCard" class="card ats-score-card" style="display: none;">
+                    <h2>ATS Score</h2>
+                    <div class="score-container">
+                        <div class="score-circle">
+                            <svg class="progress-ring" width="200" height="200">
+                                <circle class="progress-ring-circle-bg" cx="100" cy="100" r="90" />
+                                <circle class="progress-ring-circle" cx="100" cy="100" r="90" id="progressCircle" />
+                            </svg>
+                            <div class="score-text">
+                                <span class="score-value" id="atsScore">0</span>
+                                <span class="score-label">/ 100</span>
+                            </div>
+                        </div>
+                        <div class="rating-badge" id="ratingBadge">Good</div>
+                    </div>
+
+                    <div class="score-breakdown">
+                        <h3>Score Breakdown</h3>
+                        <div class="breakdown-item">
+                            <div class="breakdown-header">
+                                <span>Skills Match</span>
+                                <span id="skillMatchScore">0%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="skillMatchBar"></div>
+                            </div>
+                        </div>
+                        <div class="breakdown-item">
+                            <div class="breakdown-header">
+                                <span>Content Similarity</span>
+                                <span id="contentSimScore">0%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="contentSimBar"></div>
+                            </div>
+                        </div>
+                        <div class="breakdown-item">
+                            <div class="breakdown-header">
+                                <span>Format Quality</span>
+                                <span id="formatScore">0%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="formatBar"></div>
+                            </div>
+                        </div>
+                        <div class="breakdown-item">
+                            <div class="breakdown-header">
+                                <span>Keyword Density</span>
+                                <span id="keywordScore">0%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="keywordBar"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skills Match Card -->
+                <div id="skillsMatchCard" class="card skills-match-card" style="display: none;">
+                    <h2>Skills Analysis</h2>
+                    <div class="skills-stats">
+                        <div class="stat-item">
+                            <div class="stat-value" id="matchingSkillsCount">0</div>
+                            <div class="stat-label">Matching Skills</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="missingSkillsCount">0</div>
+                            <div class="stat-label">Missing Skills</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="totalResumeSkills">0</div>
+                            <div class="stat-label">Total Skills</div>
+                        </div>
+                    </div>
+
+                    <div class="skills-grid">
+                        <div class="skills-column">
+                            <h3 class="success-text">✓ Matching Skills</h3>
+                            <div id="matchingSkillsList" class="skills-list"></div>
+                        </div>
+                        <div class="skills-column">
+                            <h3 class="warning-text">✗ Missing Skills</h3>
+                            <div id="missingSkillsList" class="skills-list"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Resume Skills Card -->
+                <div class="card resume-skills-card">
+                    <h2>Detected Skills</h2>
+                    <div id="categorizedSkills" class="categorized-skills"></div>
+                    <div id="allSkillsList" class="skills-tags"></div>
+                </div>
+
+                <!-- Suggestions Card -->
+                <div id="suggestionsCard" class="card suggestions-card" style="display: none;">
+                    <h2>💡 Suggestions for Improvement</h2>
+                    <ul id="suggestionsList" class="suggestions-list"></ul>
+                </div>
+
+                <!-- Resume Info Card -->
+                <div class="card resume-info-card">
+                    <h2>Resume Information</h2>
+                    <div id="resumeInfo" class="resume-info-grid"></div>
+                </div>
+            </div>
+
+            <!-- Error Message -->
+            <div id="errorMessage" class="error-message" style="display: none;"></div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Built with ❤️ using Flask, Python, and Modern Web Technologies</p>
+            <p class="tech-stack">Flask • Scikit-learn • TF-IDF • NLP • REST API</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
