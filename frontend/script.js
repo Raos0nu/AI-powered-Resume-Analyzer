@@ -1,5 +1,8 @@
 // Configuration
-const API_URL = 'http://localhost:5000/api/v1';
+// Auto-detect API URL based on environment
+const API_URL = window.location.hostname === 'localhost' 
+    ? 'http://localhost:5000/api/v1' 
+    : `${window.location.origin}/api/v1`;
 
 // DOM Elements
 const analyzeForm = document.getElementById('analyzeForm');

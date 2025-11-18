@@ -1,0 +1,55 @@
+# Python
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Virtual Environment
+venv/
+ENV/
+env/
+.venv
+Scripts/
+Lib/
+Include/
+share/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# Testing
+tests/
+*.log
+
+# Uploads (let Vercel create fresh)
+backend/uploads/*.pdf
+backend/uploads/*.docx
+backend/uploads/*.txt
+
+# Documentation (not needed for deployment)
+docs/
+HOW_TO_RUN.md
+DEPLOYMENT.md
+CONTRIBUTING.md
+PROJECT_SUMMARY.md
+CHANGELOG.md
+GITHUB_PUSH_INSTRUCTIONS.md
+
+# Scripts
+run.sh
+run.bat
+Procfile
+runtime.txt
+render.yaml
+
