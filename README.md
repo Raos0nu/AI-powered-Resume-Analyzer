@@ -6,10 +6,17 @@
 ![Flask](https://img.shields.io/badge/Flask-3.0.0-green.svg)
 ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
 ![Status](https://img.shields.io/badge/Status-Active-success.svg)
+![Deployed](https://img.shields.io/badge/Deployed-Vercel-black.svg)
+[![Live Demo](https://img.shields.io/badge/Demo-Live-brightgreen.svg)](https://ai-powered-resume-analyzer.vercel.app)
 
 **An intelligent resume analysis tool that leverages AI and NLP to optimize resumes for ATS (Applicant Tracking Systems) and provide actionable insights for job seekers.**
 
-[Features](#-features) • [Demo](#-demo) • [Installation](#-installation) • [Usage](#-usage) • [API Documentation](#-api-documentation) • [Tech Stack](#-tech-stack)
+🌐 **[Live Demo](https://ai-powered-resume-analyzer.vercel.app)** | [Features](#-features) • [Installation](#-installation) • [Usage](#-usage) • [API Documentation](#-api-documentation) • [Tech Stack](#-tech-stack)
+
+---
+
+### 🚀 **Deployed on Vercel**
+Try it live: **[https://ai-powered-resume-analyzer.vercel.app](https://ai-powered-resume-analyzer.vercel.app)**
 
 </div>
 

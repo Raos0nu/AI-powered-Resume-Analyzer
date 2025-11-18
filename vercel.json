@@ -2,14 +2,56 @@
   "version": 2,
   "builds": [
     {
+      "src": "frontend/index.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "frontend/styles.css",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "frontend/script.js",
+      "use": "@vercel/static"
+    },
+    {
       "src": "api/index.py",
       "use": "@vercel/python"
     }
   ],
   "routes": [
     {
-      "src": "/(.*)",
+      "src": "/api/v1/health",
       "dest": "api/index.py"
+    },
+    {
+      "src": "/api/v1/analyze",
+      "methods": ["POST"],
+      "dest": "api/index.py"
+    },
+    {
+      "src": "/api/v1/extract-skills",
+      "methods": ["POST"],
+      "dest": "api/index.py"
+    },
+    {
+      "src": "/api/v1/(.*)",
+      "dest": "api/index.py"
+    },
+    {
+      "src": "/api/(.*)",
+      "dest": "api/index.py"
+    },
+    {
+      "src": "/styles.css",
+      "dest": "frontend/styles.css"
+    },
+    {
+      "src": "/script.js",
+      "dest": "frontend/script.js"
+    },
+    {
+      "src": "/",
+      "dest": "frontend/index.html"
     }
   ]
 }

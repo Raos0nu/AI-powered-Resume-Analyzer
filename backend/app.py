@@ -41,9 +41,10 @@ CORS(app, resources={r"/api/*": {"origins": "*"}})
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 
-@app.route('/', methods=['GET'])
+@app.route('/api', methods=['GET'])
+@app.route('/api/', methods=['GET'])
 def index():
-    """Root endpoint - API information."""
+    """Root API endpoint - API information."""
     return jsonify({
         'name': 'AI-Powered Resume Analyzer API',
         'version': '1.0.0',
