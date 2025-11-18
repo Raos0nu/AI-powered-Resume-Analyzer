@@ -575,12 +575,12 @@ SOFTWARE.
 
 ## 👨‍💻 Author
 
-**Your Name**  
+**Sonu Yadav**  
 Intermediate CS Student | Full-Stack Developer
 
-- GitHub: [@yourusername](https://github.com/yourusername)
-- LinkedIn: [Your Profile](https://linkedin.com/in/yourprofile)
-- Email: your.email@example.com
+- GitHub: [@Raos0nu](https://github.com/Raos0nu)
+- LinkedIn: [Your Profile](https://linkedin.com/in/yourprofile) <!-- Update with your LinkedIn -->
+- Email: your.email@example.com <!-- Update with your email -->
 
 ---
 
