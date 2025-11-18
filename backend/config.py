@@ -8,7 +8,8 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent
 
 # Upload settings
-UPLOAD_FOLDER = os.path.join(BASE_DIR, "uploads")
+# Use /tmp for serverless environments (Vercel, AWS Lambda, etc.)
+UPLOAD_FOLDER = os.environ.get('UPLOAD_FOLDER', '/tmp/uploads')
 MAX_FILE_SIZE = 5 * 1024 * 1024  # 5MB
 ALLOWED_EXTENSIONS = {'pdf', 'docx', 'txt', 'doc'}
 
